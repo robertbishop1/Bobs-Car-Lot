@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iomanip>
+#include <string>
 
 int main() {
     std::cout << "Welcome to Bob's used car lot and chop shop!\n" << "As you "
