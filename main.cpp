@@ -12,15 +12,63 @@ const int JPWRANG = 24390;
 
 // This menu shows the value of current car including upgrades
 int vehicleMenu(int currentVeh) {
-   int quoteNum;
+   // Holds value of current quote number
+   int quoteNum = 0;
+   // Stores Value of Upgrades
+   int valueOfUps = 0;
    int vehicleValue;
-   switch (currentVeh) {
-       case 1: vehicleValue = 8000;
-           break;
-   }
+   // Stores number of Engine Upgrades
+   int currentUpgrade = 0;
+   int userChoice;
 
+   // Gets vehicle price from switch
+   switch (currentVeh) {
+       case 1: vehicleValue = VWBEET;
+           quoteNum++;
+           break;
+       case 2: vehicleValue = PONTG6;
+           quoteNum++;
+           break;
+       case 3: vehicleValue = CHEVS10;
+           quoteNum++;
+           break;
+       case 4: vehicleValue = JPPAT;
+           quoteNum++;
+           break;
+       case 5: vehicleValue = JPWRANG;
+           quoteNum++;
+           break;
+      }
+
+    // Prints vehicle selection menu
     std::cout << "Quote:{" << quoteNum << "}  Car($" << vehicleValue <<
-              ")";
+              ")" << "E(" << currentUpgrade << ") Upgrades($" << valueOfUps
+              << ")\n" << "Do you want to upgrade your car?\n" <<
+              "[-/+1] Downgrade / Upgrade Engine\n" << "[ 2] Clear all "
+            "upgrades\n" << "[ 3] Reset car\n" << "[ 4] Buy Car!!!\n"
+            << "What would you like to do?:\n";
+
+    std::cin >> userChoice;
+
+    // This section of code controls upgrades and downgrades
+    if (userChoice == -1 || userChoice == +1 || userChoice == 1)
+
+        if (userChoice == -1 && currentUpgrade >=0)
+            currentUpgrade--;
+
+        else if (userChoice == 1 || userChoice == +1 && currentUpgrade <=4)
+            currentUpgrade++;
+    std::cout << "Did we make it jimmy?";
+
+    switch (currentUpgrade) {
+        case 0: if(currentUpgrade == 0)
+                    currentVeh;
+            break;
+        case 1: if (currentUpgrade == 1)
+                    valueOfUps == 100;
+            currentVeh;
+            break;
+    }
 
 }
 
