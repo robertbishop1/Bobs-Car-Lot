@@ -2,14 +2,19 @@
 #include <iomanip>
 #include <string>
 
+// These are the constants for the vehicle prices
 const int VWBEET = 8000;
 const int PONTG6 = 8581;
 const int CHEVS10 = 10500;
 const int JPPAT = 15209;
 const int JPWRANG = 24390;
 
+//This holds the current selected vehicle
 int currentVeh;
+// This holds the current quote number
 int quoteNum;
+// This holds the current amount of upgrades placed on the vehicle this is not the value
+int numUpgrades;
 
 // This menu shows the value of current car including upgrades
 int carMenu(int) {
