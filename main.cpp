@@ -5,7 +5,7 @@
 
 
 // This menu shows the value of current car including upgrades
-int vehicleMenu(int userChoiceVeh, int quoteNum, int vehicleValue, int
+int vehicleMenu(int quoteNum, int vehicleValue, int
 valueOfUps, int currentUpgrade) {
     // Prints vehicle selection menu
     std::cout << "Quote:{" << quoteNum << "}  Car($" << vehicleValue <<
@@ -16,21 +16,30 @@ valueOfUps, int currentUpgrade) {
               << "What would you like to do?:\n";
 }
 
-int upgradeControl(int userChoice) {
-    int valueOfUps = 0;
-    int currentUpgrade = 0;
-    // This section of code controls upgrades and downgrades
+int upgradeControl(int currentUpgrade) {
+// This section returns the value of an upgrade
 
-    switch (userChoice) {
-        case 0: userChoice = 0;
+    switch (currentUpgrade) {
+        case 0: currentUpgrade = 0;
             break;
-        case 1: userChoice = 100;
+        case 1: currentUpgrade = 100;
             break;
+        case 2: currentUpgrade = 300;
+            break;
+        case 3: currentUpgrade = 600;
+            break;
+        case 4: currentUpgrade = 1000;
+            break;
+        case 5: currentUpgrade = 1500;
+            break;
+        default: std::cout << "We have an error";
     }
+
+    return currentUpgrade;
 }
 
 void lotMenu() {
-    int userChoice;
+    // This menu displays the current selection on the car lot
     std::cout << "Welcome to Bob's used car lot and chop shop!\n" << "As you "
             "can see we have quite a few to choose from!\n" << "Which one "
                       "would you like?:" << std::endl;
@@ -68,7 +77,7 @@ int main() {
     int currentUpgrade;
 
     // Stores cost of upgrades
-    int valueOfUps;
+    int valueOfUps = 0;
 
 
     // Calls the Lot Menu and gets user selection
@@ -83,28 +92,37 @@ int main() {
             quoteNum++;
             break;
         case 3: vehicleValue = CHEVS10;
-            quoteNum++;
             break;
         case 4: vehicleValue = JPPAT;
-            quoteNum++;
             break;
         case 5: vehicleValue = JPWRANG;
-            quoteNum++;
             break;
     }
 
     // Calls selected vehicle menu and gathers choice from user
-    vehicleMenu(userChoiceVeh,quoteNum,vehicleValue, valueOfUps, currentUpgrade);
+    vehicleMenu(quoteNum,vehicleValue, valueOfUps, currentUpgrade);
     std::cin >> userChoice;
-
     if (userChoice == -1 || userChoice == 1)
+    while (userChoice == -1 || userChoice == 1) {
 
-
-        if (userChoice == -1 && currentUpgrade >=0)
+        if (userChoice == -1 && currentUpgrade >= 0) {
             currentUpgrade--;
-
-        else if (userChoice == 1 || userChoice == +1 && currentUpgrade <=4)
+            quoteNum++;
+            valueOfUps = upgradeControl(currentUpgrade);
+            vehicleMenu(quoteNum, vehicleValue, valueOfUps,
+                        currentUpgrade);
+            std::cin >> userChoice;
+        }
+        else if (userChoice == 1 || userChoice == +1 && currentUpgrade <= 4) {
             currentUpgrade++;
+            quoteNum++;
+            valueOfUps = upgradeControl(currentUpgrade);
+            vehicleMenu(quoteNum, vehicleValue, valueOfUps,
+                        currentUpgrade);
+            std::cin >> userChoice;
+        }
+        std::cout << valueOfUps;
+    }
 
     currentUpgrade = upgradeControl(userChoice);
 
